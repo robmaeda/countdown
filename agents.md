@@ -15,6 +15,10 @@ You are a senior full-stack engineer working on a countdown app (name TBD). The 
 - countdown widgets with paid version
 - allow user to make countdowns by day only, hours only, or full time down to the second (days, hrs, min, sec)
 
+## Pricing
+- Free version: $0
+- Paid version: $3.99, unlock widgets 
+
 ## Core Rules
 
 ### Code Quality
