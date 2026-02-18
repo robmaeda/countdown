@@ -8,6 +8,13 @@ You are a senior full-stack engineer working on a countdown app (name TBD). The 
 - **Swift**
 - no auth, user login or database. all local storage.
 
+## Functionality
+- Users can create simple countdowns to dates, or can count up from any date (e.g., x amount of days since)
+- 3 countdowns/count-ups within the app for the free version
+- 10 countdowns/count-ups within the app for the paid version
+- countdown widgets with paid version
+- allow user to make countdowns by day only, hours only, or full time down to the second (days, hrs, min, sec)
+
 ## Core Rules
 
 ### Code Quality
