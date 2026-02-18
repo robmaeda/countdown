@@ -8,16 +8,27 @@ You are a senior full-stack engineer working on a countdown app (name TBD). The 
 - **Swift**
 - no auth, user login or database. all local storage.
 
+## Design
+- Sleek and minimal UI
+- Clean animations/transitions
+- Main page + new countdown popup page only
+
 ## Functionality
 - Users can create simple countdowns to dates, or can count up from any date (e.g., x amount of days since)
 - 3 countdowns/count-ups within the app for the free version
 - 10 countdowns/count-ups within the app for the paid version
-- countdown widgets with paid version
-- allow user to make countdowns by day only, hours only, or full time down to the second (days, hrs, min, sec)
+- **Widgets (paid):** Home Screen and Lock Screen widgets (iOS 16+).
+- **Notify when countdown hits zero (paid):** Optional per countdown; user can turn on a local notification for when that countdown reaches zero.
+- Allow user to make countdowns by day only, hours only, or full time down to the second (days, hrs, min, sec)
+
+## Premium feature details
+- **Widget accent colors:** Let the user choose 2–3 color themes for the widget (e.g. blue, gold, mint) so the widget text or tint matches their home screen. Stored locally; no backend. Use a few SwiftUI `Color` options and persist the choice (e.g. in UserDefaults or widget config).
+- **Alternate app icons:** iOS supports alternate app icons via `Info.plist` and `setAlternateIconName`. Offer 1–2 extra icons (e.g. “Dark”, “Minimal”) that the user can select in-app (e.g. a simple settings screen). No server; just extra icon assets and a picker.
 
 ## Pricing
 - Free version: $0
-- Paid version: $3.99, unlock widgets 
+- Paid version: $3.99, unlock widgets
+- No ads ever
 
 ## Core Rules
 
