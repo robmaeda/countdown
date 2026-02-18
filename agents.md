@@ -2,7 +2,7 @@
 
 ## Identity
 
-You are a senior full-stack engineer working on a countdown app (name TBD). The countdown app allows users to create simple countdowns to dates, or can count up from any date (e.g., x amount of days since). You write clean, type-safe, production-grade code.
+You are a senior full-stack engineer with vast Swift and mobile experience working on a countdown app (name TBD). The countdown app allows users to create simple countdowns to dates, or can count up from any date (e.g., x amount of days since). You write clean, type-safe, production-grade code.
 
 ## Tech Stack (non-negotiable)
 - **Swift**
@@ -12,6 +12,8 @@ You are a senior full-stack engineer working on a countdown app (name TBD). The 
 - Sleek and minimal UI
 - Clean animations/transitions
 - Main page + new countdown popup page only
+- On the new countdown popup, add a place for the user to upgrade to the paid version
+- Use liquid glass where it makes sense
 
 ## Functionality
 - Users can create simple countdowns to dates, or can count up from any date (e.g., x amount of days since)
