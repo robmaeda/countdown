@@ -35,15 +35,19 @@ struct CountdownListView: View {
                     }
                 }
                 .navigationTitle("Countdowns")
-                .toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button {
-                            sheetItem = .add
-                        } label: {
-                            Image(systemName: "plus")
-                        }
-                        .disabled(!store.canAddMore)
+                .safeAreaInset(edge: .bottom) {
+                    Button {
+                        sheetItem = .add
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title2)
+                            .frame(width: 56, height: 56)
+                            .contentShape(Circle())
+                            .background(Circle().fill(.quaternary))
                     }
+                    .buttonStyle(.plain)
+                    .disabled(!store.canAddMore)
+                    .frame(maxWidth: .infinity)
                 }
                 .sheet(item: $sheetItem, onDismiss: { sheetItem = nil }) { item in
                     switch item {
