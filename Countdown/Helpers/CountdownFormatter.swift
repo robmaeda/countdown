@@ -5,8 +5,6 @@ enum CountdownFormatter {
     /// For count-up, the interval is from targetDate to now; for count-down, from now to targetDate.
     static func format(interval: TimeInterval, displayMode: Countdown.DisplayMode) -> String {
         let absInterval = abs(interval)
-        let isPast = interval < 0
-
         let seconds = Int(absInterval) % 60
         let minutes = (Int(absInterval) / 60) % 60
         let hours = (Int(absInterval) / 3600) % 24
@@ -40,8 +38,7 @@ enum CountdownFormatter {
     }
 
     /// Interval from now to targetDate. Positive = future (count down), negative = past (count up).
-    static func interval(to targetDate: Date, isCountUp: Bool) -> TimeInterval {
-        let delta = targetDate.timeIntervalSinceNow
-        return isCountUp ? -delta : delta
+    static func interval(to targetDate: Date) -> TimeInterval {
+        targetDate.timeIntervalSinceNow
     }
 }

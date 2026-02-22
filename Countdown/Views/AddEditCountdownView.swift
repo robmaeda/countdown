@@ -8,7 +8,6 @@ struct AddEditCountdownView: View {
 
     @State private var title: String = ""
     @State private var targetDate: Date = Date()
-    @State private var isCountUp: Bool = false
     @State private var displayMode: Countdown.DisplayMode = .full
 
     private var isEditing: Bool { editingCountdown != nil }
@@ -21,13 +20,6 @@ struct AddEditCountdownView: View {
                 }
                 Section("Date") {
                     DatePicker("Date", selection: $targetDate, displayedComponents: [.date, .hourAndMinute])
-                }
-                Section("Direction") {
-                    Picker("Direction", selection: $isCountUp) {
-                        Text("Count down").tag(false)
-                        Text("Count up").tag(true)
-                    }
-                    .pickerStyle(.segmented)
                 }
                 Section("Display") {
                     Picker("Show", selection: $displayMode) {
@@ -67,7 +59,6 @@ struct AddEditCountdownView: View {
         if let c = editingCountdown {
             title = c.title
             targetDate = c.targetDate
-            isCountUp = c.isCountUp
             displayMode = c.displayMode
         }
     }
@@ -80,7 +71,6 @@ struct AddEditCountdownView: View {
             var updated = existing
             updated.title = trimmed
             updated.targetDate = targetDate
-            updated.isCountUp = isCountUp
             updated.displayMode = displayMode
             store.update(updated)
         } else {
@@ -88,7 +78,6 @@ struct AddEditCountdownView: View {
             let new = Countdown(
                 title: trimmed,
                 targetDate: targetDate,
-                isCountUp: isCountUp,
                 displayMode: displayMode
             )
             store.add(new)

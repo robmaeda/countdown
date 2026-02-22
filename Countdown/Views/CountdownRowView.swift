@@ -5,11 +5,11 @@ struct CountdownRowView: View {
     let referenceDate: Date
 
     private var interval: TimeInterval {
-        CountdownFormatter.interval(to: countdown.targetDate, isCountUp: countdown.isCountUp)
+        CountdownFormatter.interval(to: countdown.targetDate)
     }
 
     private var directionText: String {
-        countdown.isCountUp ? "since" : "until"
+        countdown.targetDate > referenceDate ? "until" : "since"
     }
 
     var body: some View {

@@ -58,7 +58,7 @@ struct CountdownListView: View {
                         ContentUnavailableView(
                             "No countdowns",
                             systemImage: "clock.badge.questionmark",
-                            description: Text("Tap + to add one")
+                            description: Text("Tap + to add a countdown")
                         )
                     }
                 }

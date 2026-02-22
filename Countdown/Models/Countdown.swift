@@ -1,24 +1,21 @@
 import Foundation
 
-/// A single countdown (or count-up) to a date.
+/// A single countdown (or count-up) to a date. Direction is derived from targetDate: future = count down, past = count up.
 struct Countdown: Identifiable, Codable, Equatable {
     var id: UUID
     var title: String
     var targetDate: Date
-    var isCountUp: Bool
     var displayMode: DisplayMode
 
     init(
         id: UUID = UUID(),
         title: String,
         targetDate: Date,
-        isCountUp: Bool = false,
         displayMode: DisplayMode = .full
     ) {
         self.id = id
         self.title = title
         self.targetDate = targetDate
-        self.isCountUp = isCountUp
         self.displayMode = displayMode
     }
 
@@ -31,7 +28,7 @@ struct Countdown: Identifiable, Codable, Equatable {
             switch self {
             case .dayOnly: return "Days only"
             case .hoursOnly: return "Days & hours"
-            case .full: return "Full (days, hrs, min, sec)"
+            case .full: return "Days, hours, minutes, seconds"
             }
         }
     }
