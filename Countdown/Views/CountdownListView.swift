@@ -21,7 +21,9 @@ struct CountdownListView: View {
                 List {
                     ForEach(store.countdowns) { countdown in
                         Button {
-                            sheetItem = .edit(countdown)
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                                sheetItem = .edit(countdown)
+                            }
                         } label: {
                             CountdownRowView(countdown: countdown, referenceDate: context.date)
                         }
@@ -37,7 +39,9 @@ struct CountdownListView: View {
                 .navigationTitle("Countdowns")
                 .safeAreaInset(edge: .bottom) {
                     Button {
-                        sheetItem = .add
+                        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                            sheetItem = .add
+                        }
                     } label: {
                         Image(systemName: "plus")
                             .font(.title2)
@@ -49,14 +53,22 @@ struct CountdownListView: View {
                     .disabled(!store.canAddMore)
                     .frame(maxWidth: .infinity)
                 }
-                .sheet(item: $sheetItem, onDismiss: { sheetItem = nil }) { item in
-                    switch item {
-                    case .add:
-                        AddEditCountdownView(store: store, editingCountdown: nil)
-                    case .edit(let c):
-                        AddEditCountdownView(store: store, editingCountdown: c)
+                .overlay {
+                    if let item = sheetItem {
+                        Color.black.opacity(0.35)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+                                    sheetItem = nil
+                                }
+                            }
+                        sheetContent(for: item)
+                            .compositingGroup()
+                            .transition(.scale(scale: 0.3, anchor: .bottom).combined(with: .opacity))
                     }
                 }
+                .animation(.spring(response: 0.35, dampingFraction: 0.8), value: sheetItem?.id)
+                .id(sheetItem == nil)
                 .overlay {
                     if store.countdowns.isEmpty {
                         ContentUnavailableView(
@@ -67,6 +79,22 @@ struct CountdownListView: View {
                     }
                 }
             }
+        }
+    }
+
+    private func dismissSheet() {
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+            sheetItem = nil
+        }
+    }
+
+    @ViewBuilder
+    private func sheetContent(for item: CountdownSheet) -> some View {
+        switch item {
+        case .add:
+            AddEditCountdownView(store: store, onDismiss: dismissSheet, editingCountdown: nil)
+        case .edit(let c):
+            AddEditCountdownView(store: store, onDismiss: dismissSheet, editingCountdown: c)
         }
     }
 }
